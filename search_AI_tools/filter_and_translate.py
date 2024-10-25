@@ -2,7 +2,11 @@ import pandas as pd
 import difflib
 import requests
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+translate_url = os.getenv("GOOGLE_TRANSLATE_API_URL")
 # CSVファイルの読み込み
 input_csv_file = 'ProductHuntToolsList.csv'  # 元のCSVファイル名
 output_csv_file = 'Add_tools.csv'  # 抽出後のCSVファイル名
@@ -23,7 +27,7 @@ except FileNotFoundError:
     existing_df = pd.DataFrame(columns=['ツール名', '概要説明', '詳細説明', 'カテゴリー', '無料プラン', '有料プラン', 'ツールのURL', 'imageURL'])
 
 # Google Apps Scriptでデプロイした翻訳APIのURLを設定
-url = 'https://script.google.com/macros/s/AKfycbz0zCe_oNw9wGbMJKBy3DmUh7dY5-TPTNU77SUFJ9s5ytGpbQcDqCqS8IFP81tKE7NqHg/exec'
+url = translate_url
 
 # 部分一致で最も近いツールを検索し、結果をフィルタリング
 filtered_rows = []

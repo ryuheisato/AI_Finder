@@ -2,9 +2,8 @@ import pandas as pd
 import requests
 import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from tqdm import tqdm  # プログレスバー表示用
+from tqdm import tqdm 
 
-# ロギングの設定
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # CSVファイルを読み込む

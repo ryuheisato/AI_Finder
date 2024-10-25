@@ -1,7 +1,5 @@
 import tiktoken
 import json
-
-# Initialize the tokenizer for the "text-embedding-ada-002" model
 tokenizer = tiktoken.encoding_for_model("text-embedding-ada-002")
 
 # Function to count tokens for each input text

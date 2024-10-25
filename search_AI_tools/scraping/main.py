@@ -10,17 +10,14 @@ import time
 import csv
 import json
 
-# Path to the ChromeDriver
 chrome_driver_path = "./chromedriver-mac-x64/chromedriver"
 
-# Initialize the Selenium WebDriver
 service = Service(chrome_driver_path)
 driver = webdriver.Chrome(service=service)
 
-# Open the website
 url = "https://ai-gallery.jp/tools/"
 driver.get(url)
-time.sleep(3)  # Wait for the page to load completely
+time.sleep(3)
 
 # Prepare the CSV file for storing the tool details
 fields = ['ツール名', '概要説明', '詳細説明', 'カテゴリー', '無料プラン', '有料プラン', 'ツールのURL', 'imageURL']
@@ -139,7 +136,6 @@ with open('ai_tools_details.csv', 'w', newline='', encoding='utf-8') as csvfile:
             driver.execute_script("arguments[0].click();", next_button)
             time.sleep(3)  # Wait for the next page to load
 
-# Close the browser
 driver.quit()
 
 print("Scraping completed and data saved to ai_tools_details.csv")

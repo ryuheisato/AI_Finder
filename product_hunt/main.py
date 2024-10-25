@@ -3,8 +3,6 @@ import csv
 import time
 import os
 from dotenv import load_dotenv
-
-# .envファイルを読み込む
 load_dotenv()
 
 API_KEY1 = os.getenv('PRODUCT_HUNT_API_KEY1')

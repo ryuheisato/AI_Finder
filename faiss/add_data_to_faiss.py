@@ -3,10 +3,9 @@ import faiss
 import numpy as np
 import pickle
 
-jsonl_file_path = 'AItool_embeddings.jsonl'  # 作成したjsonlファイルのパス
-embedding_dim = 1536  # 埋め込みベクトルの次元数
+jsonl_file_path = 'AItool_embeddings.jsonl'
+embedding_dim = 1536
 
-# ベクトルのリストと対応するDocumentIDのリスト
 embeddings = []
 doc_ids = []
 

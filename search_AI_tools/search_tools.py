@@ -1,7 +1,6 @@
 import pandas as pd
 import difflib
 
-# CSVファイルの読み込み
 input_csv_file = 'ProductHuntToolsList.csv'  # 元のCSVファイル名
 output_csv_file = 'Add_tools.csv'  # 抽出後のCSVファイル名
 

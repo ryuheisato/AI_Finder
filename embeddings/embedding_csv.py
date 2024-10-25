@@ -4,17 +4,15 @@ import time
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-
 load_dotenv()
 
 openai_api_key = os.getenv('OPENAI_API_KEY')
-
-# OpenAI APIキーの設定
 client = OpenAI(api_key =openai_api_key)
+
 input_jsonl = 'batch_input.jsonl'
 csv_file_path = 'exported_firestore_data.csv'
 
-# Step 1: CSVからJSONLファイルを作成
+#CSVからJSONLファイルを作成
 with open(csv_file_path, 'r', encoding='utf-8') as csvfile, open(input_jsonl, 'w', encoding='utf-8') as jsonlfile:
     reader = csv.DictReader(csvfile)
     for idx, row in enumerate(reader):
@@ -34,7 +32,7 @@ with open(csv_file_path, 'r', encoding='utf-8') as csvfile, open(input_jsonl, 'w
         }, ensure_ascii=False)
         jsonlfile.write(json_line + '\n')
 
-# Step 2: JSONLファイルをアップロード
+#JSONLファイルをアップロード
 batch_input_file = client.files.create(
     file=open(input_jsonl, "rb"),
     purpose="batch"
