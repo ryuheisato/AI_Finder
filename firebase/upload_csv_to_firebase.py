@@ -3,12 +3,12 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 
 # Firebase Admin SDKの初期化
-cred = credentials.Certificate('./ai-finder-4a04e-firebase-adminsdk-f1lm9-5aac28c1c0.json')  # サービスアカウントキーのパスを指定
+cred = credentials.Certificate('../ai-finder-4a04e-firebase-adminsdk-f1lm9-5aac28c1c0.json')  # サービスアカウントキーのパスを指定
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # CSVファイルのパス
-csv_file_path = './Final.csv'  # CSVファイルのパスを指定
+csv_file_path = '../AI_Tools.csv'  # CSVファイルのパスを指定
 
 # コレクションの名前
 collection_name = 'ai_tools'
@@ -27,21 +27,19 @@ batch_size = 500
 batch_data = []
 batch_num = 0
 
-with open(csv_file_path, 'r', encoding='utf-8') as csvfile:
+with open(csv_file_path, 'r', encoding='utf-8-sig') as csvfile:
     reader = csv.DictReader(csvfile)
+    print("CSVヘッダー:", reader.fieldnames)
     for idx, row in enumerate(reader):
         batch_data.append((idx, {
-            'Name': row['Name'],
-            'Tagline': row['Tagline'],
-            'Description': row['Description'],
-            'Votes Count': int(row['Votes Count']),
-            'Website': row['Website'],
-            'Topic Names': row['Topic Names'].split(', '),
-            'Reviews Rating': float(row['Reviews Rating']),
-            'Slug': row['Slug'],
-            'Thumbnail URL': row['Thumbnail URL'],
-            'Created At': row['Created At'],
-            'EndCursor': row['EndCursor']
+            'Name': row['ツール名'],
+            'Tagline': row['概要説明'],
+            'Description': row['詳細説明'],
+            'Category': row['カテゴリー'],
+            'Free Plan': row['無料プラン'],
+            'Paid Plan': row['有料プラン'],
+            'Website': row['ツールのURL'],
+            'Image URL': row['imageURL']
         }))
         
         if len(batch_data) == batch_size:
