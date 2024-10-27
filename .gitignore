@@ -153,3 +153,5 @@ ai-finder-4a04e-firebase-adminsdk-f1lm9-5aac28c1c0.json
 
 # ChromeDriver
 chromedriver
+# macOS
+.DS_Store

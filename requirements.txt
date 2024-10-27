@@ -1,0 +1,11 @@
+pandas
+selenium
+beautifulsoup4
+requests
+python-dotenv
+openai
+tqdm
+firebase-admin
+faiss-cpu
+pinecone-client
+tiktoken

@@ -1,25 +1,22 @@
 import pandas as pd
-import glob
 
-# 1. 現在のディレクトリにあるすべてのCSVファイルを取得
-csv_files = glob.glob('./*.csv')
+# 1. 2つのCSVファイルのパスを指定
+csv_file_1 = '../search_AI_tools/Summarized.csv'
+csv_file_2 = '../search_AI_tools/Add_tools.csv'
 
-# 2. 共通の列名を定義（列名はすでにCSVファイルに含まれているので特に設定しない）
+# 2. DataFrameのリストを作成
 dfs = []
-for csv_file in csv_files:
-    # CSVファイルを読み込む（最初の行がヘッダー行）
+
+# 3. 各CSVファイルを読み込み、空行を削除してリストに追加
+for csv_file in [csv_file_1, csv_file_2]:
     df = pd.read_csv(csv_file, skip_blank_lines=True)
-
-    # 空行を削除
     df.dropna(how='all', inplace=True)
-
-    # DataFrameをリストに追加
     dfs.append(df)
 
-# 3. データフレームを連結
+# 4. データフレームを連結
 combined_df = pd.concat(dfs, ignore_index=True)
 
-# 4. 連結したデータを1つのCSVファイルに保存
+# 5. 連結したデータを1つのCSVファイルに保存
 combined_df.to_csv('combined_data.csv', index=False)
 
 print(f"Total rows combined: {len(combined_df)}")
