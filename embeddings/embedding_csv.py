@@ -17,7 +17,7 @@ with open(csv_file_path, 'r', encoding='utf-8') as csvfile, open(input_jsonl, 'w
     reader = csv.DictReader(csvfile)
     for idx, row in enumerate(reader):
         # ベクトル化するテキストを結合
-        text_to_embed = f"Name: {row['Name']}. Tagline: {row['Tagline']}. Description: {row['Description']}. Category: {row['Category']}"
+        text_to_embed = f"Name: {row['Name']}. Tagline: {row['Tagline']}. Category: {row['Category']}"
         # DocumentIDをcustom_idとして使用
         custom_id = row['DocumentID']
         # JSONL形式で書き込み
